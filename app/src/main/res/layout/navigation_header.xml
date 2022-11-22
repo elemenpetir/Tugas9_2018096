@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="#89C7D0"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logoalbum" />
+    <Space android:layout_width="match_parent"
+        android:layout_height="8dp" />
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AlbumCamp"
+        android:textSize="11pt"
+        android:textColor="@color/black"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+</LinearLayout>
