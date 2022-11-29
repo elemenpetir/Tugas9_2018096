@@ -13,8 +13,16 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+// tugas myworker
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import com.example.pertemuan5_recycleview.databinding.ActivityMainBinding;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    // tugas myworker
+    private ActivityMainBinding binding;
     // tugas recycle view
     RecyclerView recylerView;
     String s1[], s2[],s3[];
@@ -24,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle abut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // tugas recycle view
+        // tugas MyWorker
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        final OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(MyWorker.class).build();
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WorkManager.getInstance().enqueueUniqueWork("Notifikasi", ExistingWorkPolicy.REPLACE, request);
+            }
+        });
+        // tugas recycle view
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.activity_main);
         recylerView = findViewById(R.id.recyclerView);
         s1 = getResources().getStringArray(R.array.Album);
         s2 = getResources().getStringArray(R.array.price);
